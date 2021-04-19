@@ -1,33 +1,50 @@
-import numpy as np
-import matplotlib.pyplot as plt
 import random
+from civilization import Civilization
+import matplotlib.pyplot as plt
+from scipy import spatial
+from sklearn.neighbors import NearestNeighbors
 
-grid_size = 100
-grid = np.zeros((grid_size, grid_size), int)
+class Universe:
+    def __init__(self, civ_total, malicious, exposing):
+        self.civ_total = civ_total
+        self.malicious = malicious
+        self.exposing = exposing
 
-for i in range(10):
-    x = random.randrange(grid_size)
-    y = random.randrange(grid_size)
-    grid[x][y] = 1
+        self.civilizations = self.generate_civilizations()
+        self.coordinates = self.get_civilization_coordinates()
+        self.malicious_civs = []
+        self.benevolent_civs = []
+        self.find_malicious_civilizations()
 
-for i in range(10):
-    x = random.randrange(grid_size)
-    y = random.randrange(grid_size)
-    grid[x][y] = 2
 
-print(grid)
+    def generate_civilizations(self):
+        l = []
+        for i in range(self.civ_total):
+            m = random.randrange(100) < self.malicious
+            e = random.randrange(100) < self.exposing
+            l.append(Civilization(m, e))
+        return l
 
-fig = plt.figure(figsize=(6, 3.2))
 
-ax = fig.add_subplot(111)
-ax.set_title('dark forest universe')
-plt.imshow(grid)
-ax.set_aspect('equal')
+    def get_civilization_coordinates(self):
+        coordinates = []
+        for i in self.civilizations:
+            coordinates.append(i.location)
+        return coordinates
 
-cax = fig.add_axes([0.12, 0.1, 0.78, 0.8])
-cax.get_xaxis().set_visible(False)
-cax.get_yaxis().set_visible(False)
-cax.patch.set_alpha(0)
-cax.set_frame_on(False)
-plt.colorbar(orientation='vertical')
-plt.show()
+
+    def find_nearest_neighbours(self, civ):
+        a = spatial.KDTree(self.coordinates)
+        print('earth location', civ.location)
+        a = a.query(civ.location, k=8)
+        print(a)
+        print(a[1][1])
+        print(self.coordinates[a[1][1]])
+
+
+    def find_malicious_civilizations(self):
+        for i in self.civilizations:
+            if i.malicious:
+                self.malicious_civs.append(i.location)
+            else:
+                self.benevolent_civs.append(i.location)

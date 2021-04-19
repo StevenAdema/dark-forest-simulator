@@ -6,7 +6,7 @@ Cixin Liu, *The Dark Forest*
 
 ## Background
 
-If the Drake equation is right that there are many advance civilization in the universe, why haven't we heard from them? Cixin Liu's answer in the second book of this Three Body Problem gives a compelling an chilling answer: The Dark Forest Theory. The argument is built on two axioms:
+If the Drake equation is right that there are many advance civilization in the universe, why haven't we heard from them? Cixin Liu's answer in the second book of this Three Body Problem gives a compelling and chilling answer: The Dark Forest Theory. The argument is built on two axioms:
 1. Survival is the primary need of civilization
 2. Civilization continuously grows and expands, but the total matter in the universe remains constant.
 
@@ -39,7 +39,7 @@ d = the fraction of civilizations that develop technology capable of destroying 
 
 t = the length of time required from a civilization to move from between civilization types
 
-r = the fraction of cilizations which will try to make contact with other civilizations
+r = the fraction of civilizations which will try to make contact with other civilizations
 
 m = the fraction of civilizations which are malicious, i.e. when learning of a civilization will destroy it.
 
