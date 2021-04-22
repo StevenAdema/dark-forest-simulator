@@ -3,7 +3,7 @@ import string
 
 class Civilization:
     def __init__(self, malicious, exposes, progress_time=1000, type=2, grid_size=1000):
-        self.grid_size = grid_size
+        self.grid_size = grid_size # TODO: move to universe
         self.malicious = malicious
         self.type = type
         self.progress_time = progress_time
