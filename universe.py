@@ -33,13 +33,25 @@ class Universe:
         return coordinates
 
 
-    def find_nearest_neighbours(self, civ):
+    def find_neighbours(self, civ):
+        """
+        Find the 10 closest neighbours to a civilization
+        :param civ: the civilization whose neighbours you'd like to find
+        :return: an array civiilzations closest to the passed civ
+        """
+        neighbours = []
         a = spatial.KDTree(self.coordinates)
         print('earth location', civ.location)
-        a = a.query(civ.location, k=8)
-        print(a)
-        print(a[1][1])
-        print(self.coordinates[a[1][1]])
+        a = a.query(civ.location, k=10)
+        a1 = a[1]
+        print(a[1])
+        exit()
+        for i in a[1]:
+            print(i)
+            i = a[1][i]
+            print('poistion in coordinates list: ',a[1][i])
+            neighbours.append(self.civilizations[i])
+        return neighbours
 
 
     def find_malicious_civilizations(self):
@@ -48,3 +60,7 @@ class Universe:
                 self.malicious_civs.append(i.location)
             else:
                 self.benevolent_civs.append(i.location)
+
+    def get_civ_by_location(self, location):
+        print(self.civilizations)
+        # return civ

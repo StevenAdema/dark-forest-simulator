@@ -7,13 +7,16 @@ from sklearn.neighbors import NearestNeighbors
 
 def main():
     fraction_malicious = 50
-    fraction_exposing = 50
+    fraction_exposing = 99
 
     universe = Universe(15, fraction_malicious, fraction_exposing)
     coordinates = universe.coordinates
 
     earth = universe.civilizations[0]
-    universe.find_nearest_neighbours(earth)
+    if earth.broadcasts:
+        earth.send_broadcast()
+        neighbours = universe.find_neighbours(earth)
+
 
     # print(coordinates)
     plt.scatter(*zip(*coordinates))

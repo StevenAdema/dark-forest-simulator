@@ -2,12 +2,12 @@ import random
 import string
 
 class Civilization:
-    def __init__(self, malicious, exposes, progress_time=1000, type=2, grid_size=1000):
-        self.grid_size = grid_size # TODO: move to universe
+    def __init__(self, malicious, broadcasts, progress_time=1000, type=2, grid_size=1000):
+        self.grid_size = grid_size
         self.malicious = malicious
         self.type = type
         self.progress_time = progress_time
-        self.exposes = exposes
+        self.broadcasts = broadcasts
         self.location = self.generate_location()
         self.name = self.generate_civ_name()
 
@@ -27,5 +27,8 @@ class Civilization:
         print(self.name)
         print('malicious: ', self.malicious)
         print('type: ', self.type)
-        print('exposes: ', self.exposes)
+        print('broadcasts: ', self.broadcasts)
         print('location: ', self.location)
+
+    def send_broadcast(self):
+        print('Hello Universe! Anybody there? ')
