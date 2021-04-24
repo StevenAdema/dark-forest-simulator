@@ -2,6 +2,7 @@ import random
 from civilization import Civilization
 import matplotlib.pyplot as plt
 from scipy import spatial
+import numpy as np
 from sklearn.neighbors import NearestNeighbors
 
 class Universe:
@@ -41,15 +42,8 @@ class Universe:
         """
         neighbours = []
         a = spatial.KDTree(self.coordinates)
-        print('earth location', civ.location)
         a = a.query(civ.location, k=10)
-        a1 = a[1]
-        print(a[1])
-        exit()
-        for i in a[1]:
-            print(i)
-            i = a[1][i]
-            print('poistion in coordinates list: ',a[1][i])
+        for i in np.nditer(a[1]):
             neighbours.append(self.civilizations[i])
         return neighbours
 
