@@ -12,7 +12,7 @@ def main():
     coordinates = universe.coordinates
 
     earth = universe.civilizations[0]
-    # earth.describe()
+    earth.broadcasts = True
     if earth.broadcasts:
         earth.send_broadcast()
         neighbours = universe.find_neighbours(earth)

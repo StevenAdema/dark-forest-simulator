@@ -6,10 +6,12 @@ import numpy as np
 from sklearn.neighbors import NearestNeighbors
 
 class Universe:
-    def __init__(self, civ_total, malicious, exposing):
+    def __init__(self, civ_total, malicious, exposing, x=1000, y=1000):
         self.civ_total = civ_total
         self.malicious = malicious
         self.exposing = exposing
+        self.x = x
+        self.y = y
 
         self.civilizations = self.generate_civilizations()
         self.coordinates = self.get_civilization_coordinates()
@@ -23,7 +25,7 @@ class Universe:
         for i in range(self.civ_total):
             m = random.randrange(100) < self.malicious
             e = random.randrange(100) < self.exposing
-            l.append(Civilization(m, e))
+            l.append(Civilization(m, e, grid_size=1000))
         return l
 
 
